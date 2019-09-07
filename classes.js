@@ -32,6 +32,7 @@ class Forma {
     transformar_2d(matriz_transf) {
         //A variavel array receberá o vetor com as coordenadas do objeto e a coordenada homogenea
         var array = []
+        var array_novo = []
 
         //Aplicando a transformação em todas as coordenadas da forma
         for(var i = 0; i<this.coordenadas.length; i++) {
@@ -39,13 +40,13 @@ class Forma {
             array = [this.coordenadas[i][0], this.coordenadas[i][1], 1]
 
             //Multiplicação de matrizes 
-            array[0] = array[0] * matriz_transf[0][0] + array[0] * matriz_transf[1][0] + array[0] * matriz_transf[2][0]
-            array[1] = array[1] * matriz_transf[0][1] + array[1] * matriz_transf[1][1] + array[1] * matriz_transf[2][1]
-            array[2] = array[2] * matriz_transf[0][2] + array[2] * matriz_transf[1][2] + array[2] * matriz_transf[2][2]
+            array_novo[0] = array[0] * matriz_transf[0][0] + array[1] * matriz_transf[0][1] + array[2] * matriz_transf[0][2]
+            array_novo[1] = array[0] * matriz_transf[1][0] + array[1] * matriz_transf[1][1] + array[2] * matriz_transf[1][2]
+            array_novo[2] = array[0] * matriz_transf[2][0] + array[1] * matriz_transf[2][1] + array[2] * matriz_transf[2][2]
         
             //Fazendo os valores das coordenadas serem atualizados depois da transformação
-            this.coordenadas[i][0] = array[0]/array[2]
-            this.coordenadas[i][1] = array[1]/array[2]
+            this.coordenadas[i][0] = array_novo[0]/array_novo[2]
+            this.coordenadas[i][1] = array_novo[1]/array_novo[2]
         }
     }
 }
