@@ -1,3 +1,13 @@
+function divisao_da_matriz(matriz, num_divisao) {
+    //Divisão da matriz para fazer in between
+    for (var i = 0; i<matriz.length; i++) {
+        for (var j = 0; j<matriz[i].length; j++) {
+            matriz[i][j] = matriz[i][j]/num_divisao;            
+        }
+    }
+    return matriz;
+}
+
 window.onload=function(){
 
     //Declarando o canvas e o context
@@ -13,4 +23,15 @@ window.onload=function(){
     forma_estrela_2d = new Forma(ctx, coord_star_2d, arest_star_2d, fac_star_2d);
     forma_estrela_2d.desenhar_linhas();
     
+    //Matriz transformação
+    matriz = [
+        [1, 0, 150],
+        [0, 1, 0],
+        [0, 0, 1]
+    ];
+
+    //Estrela com transformação
+    forma_estrela_2d.transformar_2d(matriz);
+    forma_estrela_2d.desenhar_linhas();
+
 }
