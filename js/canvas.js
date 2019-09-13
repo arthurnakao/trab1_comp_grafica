@@ -22,16 +22,11 @@ window.onload=function(){
     //Estrela
     forma_estrela_2d = new Forma(ctx, coord_star_2d, arest_star_2d, fac_star_2d);
     forma_estrela_2d.desenhar_linhas();
-    
-    //Matriz transformação
-    matriz = [
-        [1, 0, 150],
-        [0, 1, 0],
-        [0, 0, 1]
-    ];
 
-    //Estrela com transformação
-    forma_estrela_2d.transformar_2d(matriz);
-    forma_estrela_2d.desenhar_linhas();
+    function oi(){
+        console.log("oi")
+    }
+    
+    setInterval(oi,41.6666666667) //A função é executada em cada frame, tendo cada frame o valor de 1/24 segundos
 
 }
