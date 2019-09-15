@@ -20,13 +20,16 @@ window.onload=function(){
     fac_star_2d = [] //A estrela ainda não tem as declarações de faces
 
     //Estrela
-    forma_estrela_2d = new Forma(ctx, coord_star_2d, arest_star_2d, fac_star_2d);
-    forma_estrela_2d.desenhar_linhas();
+    forma_estrela_2d = new Forma(coord_star_2d, arest_star_2d, fac_star_2d);
 
-    function oi(){
+    //Projetando a imagem
+    projetor = new Projetor(ctx,[forma_estrela_2d], null);
+    projetor.projetar();
+
+    function animacao(){
         console.log("oi")
     }
     
-    setInterval(oi,41.6666666667) //A função é executada em cada frame, tendo cada frame o valor de 1/24 segundos
+    setInterval(animacao,41.6666666667) //A função é executada em cada frame, tendo cada frame o valor de 1/24 segundos
 
 }
