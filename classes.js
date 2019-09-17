@@ -1,4 +1,4 @@
-class Forma { 
+class Forma {
     constructor(ctx, array_coordenadas, array_arestas, array_faces) {
         this.coordenadas = array_coordenadas; //Array de Arrays (Tamanho 2), que tem o (x, y) de cada vértice da figura.
         this.arestas = array_arestas; //Array de Arrays (Tamanho 2), que tem o index das coordenadas que devem ser ligadas por um aresta
@@ -12,7 +12,7 @@ class Forma {
         this.ctx.beginPath()
 
         //For para desenhar todas as arestas
-        for(var i = 0; i<this.arestas.length; i++) {
+        for (var i = 0; i < this.arestas.length; i++) {
             //Posiciona o cursor nas coordenadas definidas pelo primeiro vertice da aresta
             this.ctx.moveTo(this.coordenadas[this.arestas[i][0]][0], this.coordenadas[this.arestas[i][0]][1])
             //Desenha uma linha até o segundo vértice da aresta
@@ -35,18 +35,21 @@ class Forma {
         var array_novo = []
 
         //Aplicando a transformação em todas as coordenadas da forma
-        for(var i = 0; i<this.coordenadas.length; i++) {
+        for (var i = 0; i < this.coordenadas.length; i++) {
 
-            array = [this.coordenadas[i][0], this.coordenadas[i][1], 1]
+            array = [this.coordenadas[i][0], this.coordenadas[i][1], this.coordenadas[i][2], 1]
 
             //Multiplicação de matrizes 
-            array_novo[0] = array[0] * matriz_transf[0][0] + array[1] * matriz_transf[0][1] + array[2] * matriz_transf[0][2]
-            array_novo[1] = array[0] * matriz_transf[1][0] + array[1] * matriz_transf[1][1] + array[2] * matriz_transf[1][2]
-            array_novo[2] = array[0] * matriz_transf[2][0] + array[1] * matriz_transf[2][1] + array[2] * matriz_transf[2][2]
-        
+            array_novo[0] = array[0] * matriz_transf[0][0] + array[1] * matriz_transf[0][1] + array[2] * matriz_transf[0][2] + array[3] * matriz_transf[0][3]
+            array_novo[1] = array[0] * matriz_transf[1][0] + array[1] * matriz_transf[1][1] + array[2] * matriz_transf[1][2] + array[3] * matriz_transf[1][3]
+            array_novo[2] = array[0] * matriz_transf[2][0] + array[1] * matriz_transf[2][1] + array[2] * matriz_transf[2][2] + array[3] * matriz_transf[2][3]
+            array_novo[3] = array[0] * matriz_transf[3][0] + array[1] * matriz_transf[3][1] + array[2] * matriz_transf[3][2] + array[3] * matriz_transf[3][3]
+
             //Fazendo os valores das coordenadas serem atualizados depois da transformação
-            this.coordenadas[i][0] = array_novo[0]/array_novo[2]
-            this.coordenadas[i][1] = array_novo[1]/array_novo[2]
+            this.coordenadas[i][0] = array_novo[0] / array_novo[3]
+            this.coordenadas[i][1] = array_novo[1] / array_novo[3]
+            this.coordenadas[i][2] = array_novo[2] / array_novo[3]
+            this.coordenadas[i][2] = array_novo[3] / array_novo[3]
         }
     }
 }
