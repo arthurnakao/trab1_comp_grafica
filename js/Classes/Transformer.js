@@ -1,13 +1,13 @@
 class Transformer { //Clase que vai fazer as transformações
-    constructor(matrizesDeTransformacao){
-        this.matrizesDeTransformacao = matrizesDeTransformacao;
-        this.transformacoesIntermediarias = [];
+    constructor(matrizDeTransformacao, inicio, fim) {
+        this.matrizDeTransformacao = matrizDeTransformacao;
+        this.inicio = inicio;
+        this.fim = fim;
+        this.transformacoesIntermediarias = {};
     };
 
-    criadorDeInbetween(){
-        for(var i = 0; i < matrizesDeTransformacao.length; i++){
-            this.matrizesDeTransformacao.
-        }
+    criadorDeInbetween() {
+
     }
 
 

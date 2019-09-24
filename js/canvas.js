@@ -1,14 +1,14 @@
 function divisao_da_matriz(matriz, num_divisao) {
     //Divisão da matriz para fazer in between
-    for (var i = 0; i<matriz.length; i++) {
-        for (var j = 0; j<matriz[i].length; j++) {
-            matriz[i][j] = matriz[i][j]/num_divisao;            
+    for (var i = 0; i < matriz.length; i++) {
+        for (var j = 0; j < matriz[i].length; j++) {
+            matriz[i][j] = matriz[i][j] / num_divisao;
         }
     }
     return matriz;
 }
 
-window.onload=function(){
+window.onload = function () {
 
     //Declarando o canvas e o context
     canvas = document.getElementById("canvas-1");
@@ -23,13 +23,15 @@ window.onload=function(){
     forma_estrela_2d = new Forma(coord_star_2d, arest_star_2d, fac_star_2d);
 
     //Projetando a imagem
-    projetor = new Projetor(ctx,[forma_estrela_2d], null);
+    projetor = new Projetor(ctx, [forma_estrela_2d], null);
     projetor.projetar();
 
-    function animacao(){
+    function animacao() {
         console.log("oi")
     }
-    
-    setInterval(animacao,41.6666666667) //A função é executada em cada frame, tendo cada frame o valor de 1/24 segundos
+    escala = new Escala([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 2, 6);
+    console.log(escala.criadorDeInbetween())
+
+    //setInterval(animacao,41.6666666667) //A função é executada em cada frame, tendo cada frame o valor de 1/24 segundos
 
 }
