@@ -1,4 +1,3 @@
-
 class Escala extends Transformer {
     criadorDeInbetween() {
         var intervalo = this.fim - this.inicio;
@@ -31,4 +30,4 @@ class Escala extends Transformer {
         return this.transformacoesIntermediarias;
     }
 
-}
+} 

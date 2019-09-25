@@ -1,5 +1,5 @@
-class Matrizes {
-    multiplicacao(a, b) {
+class Matrizes{
+    multiplicacao(a,b){
         var aNumRows = a.length, aNumCols = a[0].length,
             bNumRows = b.length, bNumCols = b[0].length,
             m = new Array(aNumRows);  // initialize array of rows
@@ -22,12 +22,13 @@ class Matrizes {
         }
         return true;
     }
-    soma(a, b) {
+    soma(a,b){
         var m = []
         var k = []
         for (var i = 0; i < a.length; i++) {
             for (var j = 0; j < a[i].length; j++) {
                 k.push(a[i][j] + b[i][j]);
+
 
             }
             m.push(k);
@@ -35,12 +36,13 @@ class Matrizes {
         }
         return m;
     }
-    subtracao(a, b) {
+    subtracao(a,b){
         var m = []
         var k = []
         for (var i = 0; i < a.length; i++) {
             for (var j = 0; j < a[i].length; j++) {
                 k.push(a[i][j] - b[i][j]);
+
 
             }
             m.push(k);

@@ -1,4 +1,4 @@
-class Translacao extends Transformer {
+class Cizalhamento extends Transformer {
     criadorDeInbetween() {
         var intervalo = this.fim - this.inicio;
         var m = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
@@ -6,9 +6,16 @@ class Translacao extends Transformer {
         var matrizes = new Matrizes()
         var identidade = matrizes.identidade(this.matrizDeTransformacao);
 
-        for (var i = 0; i < 4; i++) {
-            m[3][i] = this.matrizDeTransformacao[3][i]/intervalo
-
+        for (var i = 0; i < 3; i++) {
+            for(var j=0; j<3; j++){
+                if (this.matrizDeTransformacao[i][j] == 1) {
+                    m[i][j] = 0;
+                }
+                else  {
+                    m[i][j] = this.matrizDeTransformacao[i][j] / intervalo;
+                }
+                
+            }
         }
         var matrizAux = this.matrizDeTransformacao;
         for (var j = this.fim; j > this.inicio; j--) {
