@@ -1,13 +1,3 @@
-function divisao_da_matriz(matriz, num_divisao) {
-    //Divisão da matriz para fazer in between
-    for (var i = 0; i < matriz.length; i++) {
-        for (var j = 0; j < matriz[i].length; j++) {
-            matriz[i][j] = matriz[i][j] / num_divisao;
-        }
-    }
-    return matriz;
-}
-
 window.onload = function () {
 
     //Declarando o canvas e o context
@@ -81,6 +71,7 @@ window.onload = function () {
     forma_estrela_2d.transformar_2d(matriz_tilt);
     console.log(forma_estrela_2d)
 
+    //Colocando coordenada homogênea nos vetores da Forma
     for (var i = 0; i < forma_estrela_2d.coordenadas.length; i++) {
         forma_estrela_2d.coordenadas[i][3] = 1;
     }
@@ -88,7 +79,7 @@ window.onload = function () {
 
 
     escala = new Escala([[0.5, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 0.5, 0], [0, 0, 0, 1]], 0, 200);
-    translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [4000, 4000, 4000, 1]], 0, 5000)
+    translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [400, 400, 400, 1]], 0, 500)
     cizalhamento = new Cizalhamento([[1, 0.1, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 24)
     translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [4000, 2000, 4000, 1]], 0, 1000)
     escala2 = new Escala([[0.1, 0, 0, 0], [0, 0.1, 0, 0], [0, 0, 0.1, 0], [0, 0, 0, 1]], 0, 50);
@@ -100,15 +91,16 @@ window.onload = function () {
     var z2 = translacao.criadorDeInbetween();
     var z3 = cizalhamento.criadorDeInbetween();
     var z4 = translacao2.criadorDeInbetween();
-    var total = [z3,]
+    var total = [z3, z2]
 
     console.log(z2[5])
 
     function animacao() {
         var aux =[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
         for(var i = 0; i<total.length;i++){
-
+            if(total[i][x] != undefined) {
                 aux = matrizaux.multiplicacao(aux,total[i][x])
+            }
             
         }
         
