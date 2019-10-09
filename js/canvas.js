@@ -1,5 +1,7 @@
 window.onload = function () {
 
+    var matrizaux = new Matrizes();
+
     //Declarando o canvas e o context
     canvas = document.getElementById("canvas-1");
     ctx = canvas.getContext("2d");
@@ -66,7 +68,7 @@ window.onload = function () {
                 [0,0,1,0],
                 [0,0,0,1]
             ];
-
+    //mat_proj = matrizaux.transposta(mat_proj);
     //Projetando a imagem
     projetor = new Projetor(ctx, [forma_estrela_2d], mat_proj);
 
@@ -94,7 +96,6 @@ window.onload = function () {
     var x = 1;
     var x1 = 1;
     var z = escala.criadorDeInbetween();
-    var matrizaux = new Matrizes();
     var z2 = translacao.criadorDeInbetween();
     var z3 = cizalhamento.criadorDeInbetween();
     var z4 = translacao2.criadorDeInbetween();

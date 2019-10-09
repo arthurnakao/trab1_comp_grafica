@@ -8,12 +8,17 @@ class Projetor{
 
     projetar(){
         this.listaDeObjetos.forEach(element => {
-            let aux = [];
-            for (let x in element.coordenadas)
-                aux.push(this.matrizes.multiplicacao(this.matrizDeProjecao,x));
-            let temp = new Forma(aux, element.arestas, element.faces)
-            console.log(temp);
-            this.desenhar_linhas(temp);
+            if(this.matrizDeProjecao){
+                let aux = [];
+                for (let x in element.coordenadas)
+                    aux.push(this.matrizes.multiplicacao(x,this.matrizDeProjecao));
+                let temp = new Forma(aux, element.arestas, element.faces)
+                console.log(temp.coordenadas);
+                console.log(element.coordenadas);
+                this.desenhar_linhas(temp);
+            } else {
+                this.desenhar_linhas(element);
+            }
         });
     }
 
