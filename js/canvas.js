@@ -66,11 +66,15 @@ window.onload = function () {
     projetor = new Projetor(ctx, [forma_estrela_2d], null);
 
 
-    matriz_tilt = [[Math.cos(Math.PI / 3), (Math.cos(Math.PI / 4) * Math.cos(Math.PI / 4)), -(Math.cos(Math.PI / 4)) * Math.cos(Math.PI / 3), 0],
-    [0, Math.cos(Math.PI / 3), Math.cos(Math.PI / 4), 0],
-    [Math.cos(Math.PI / 4), -(Math.cos(Math.PI / 4) * Math.cos(Math.PI / 3)), Math.cos(Math.PI / 3) * Math.cos(Math.PI / 3), 0],
-    [0, 0, 0, 1]]
-    forma_estrela_2d.transformar_2d(matrizaux.transposta(matriz_tilt));
+    // matriz_tilt = [[Math.cos(Math.PI / 3), (Math.cos(Math.PI / 4) * Math.cos(Math.PI / 4)), -(Math.cos(Math.PI / 4)) * Math.cos(Math.PI / 3), 0],
+    // [0, Math.cos(Math.PI / 3), Math.cos(Math.PI / 4), 0],
+    // [Math.cos(Math.PI / 4), -(Math.cos(Math.PI / 4) * Math.cos(Math.PI / 3)), Math.cos(Math.PI / 3) * Math.cos(Math.PI / 3), 0],
+    // [0, 0, 0, 1]]
+    matrix_tilt = [[1,0,0,0],
+                   [0,1,0.8,0],
+                   [0,0,0.8,0],
+                   [0,0,0,1]]
+    forma_estrela_2d.transformar_2d(matrix_tilt);
     console.log(forma_estrela_2d)
 
     //Colocando coordenada homogênea nos vetores da Forma
