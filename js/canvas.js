@@ -4,6 +4,8 @@ window.onload = function () {
     canvas = document.getElementById("canvas-1");
     ctx = canvas.getContext("2d");
 
+    var matrizaux = new Matrizes();
+
     //variaveis das coordenadas da estrela 2d
     coord_star_2d = [[425 / 10, 0, 50 / 10],
     [295 / 10, 270 / 10, 50 / 10],
@@ -68,7 +70,7 @@ window.onload = function () {
     [0, Math.cos(Math.PI / 3), Math.cos(Math.PI / 4), 0],
     [Math.cos(Math.PI / 4), -(Math.cos(Math.PI / 4) * Math.cos(Math.PI / 3)), Math.cos(Math.PI / 3) * Math.cos(Math.PI / 3), 0],
     [0, 0, 0, 1]]
-    forma_estrela_2d.transformar_2d(matriz_tilt);
+    forma_estrela_2d.transformar_2d(matrizaux.transposta(matriz_tilt));
     console.log(forma_estrela_2d)
 
     //Colocando coordenada homogênea nos vetores da Forma
@@ -87,7 +89,6 @@ window.onload = function () {
     var x = 1;
     var x1 = 1;
     var z = escala.criadorDeInbetween();
-    var matrizaux = new Matrizes();
     var z2 = translacao.criadorDeInbetween();
     var z3 = cizalhamento.criadorDeInbetween();
     var z4 = translacao2.criadorDeInbetween();

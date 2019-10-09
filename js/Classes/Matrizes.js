@@ -50,4 +50,12 @@ class Matrizes{
         }
         return m;
     }
+    transposta(a){
+        //Só funciona com matrizes quadradas
+        let aux = Array.from(a);
+        for(let i = 0; i< a.length; i++)
+            for(let j = 0; j< a.length; j++)
+                aux[i][j]=a[j][i];
+        return aux;
+    }
 }
