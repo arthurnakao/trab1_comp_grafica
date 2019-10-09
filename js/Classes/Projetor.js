@@ -3,11 +3,17 @@ class Projetor{
         this.ctx = ctx;
         this.listaDeObjetos = listaDeObjetos;
         this.matrizDeProjecao = matrizDeProjecao;
+        this.matrizes = new Matrizes();
     }
 
     projetar(){
         this.listaDeObjetos.forEach(element => {
-            this.desenhar_linhas(element);
+            let aux = [];
+            for (let x in element.coordenadas)
+                aux.push(this.matrizes.multiplicacao(this.matrizDeProjecao,x));
+            let temp = new Forma(aux, element.arestas, element.faces)
+            console.log(temp);
+            this.desenhar_linhas(temp);
         });
     }
 

@@ -60,8 +60,15 @@ window.onload = function () {
     //Estrela
     forma_estrela_2d = new Forma(coord_star_2d, arest_star_2d, fac_star_2d);
 
+    //Matriz de Projeção
+    mat_proj = [[1,0,0,0],
+                [0,1,0,0],
+                [0,0,1,0],
+                [0,0,0,1]
+            ];
+
     //Projetando a imagem
-    projetor = new Projetor(ctx, [forma_estrela_2d], null);
+    projetor = new Projetor(ctx, [forma_estrela_2d], mat_proj);
 
 
     matriz_tilt = [[Math.cos(Math.PI / 3), (Math.cos(Math.PI / 4) * Math.cos(Math.PI / 4)), -(Math.cos(Math.PI / 4)) * Math.cos(Math.PI / 3), 0],
