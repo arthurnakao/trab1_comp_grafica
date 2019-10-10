@@ -112,7 +112,7 @@ window.onload = function () {
         var aux =[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
         for(var i = 0; i<total.length;i++){
             if(total[i][x] != undefined) {
-                aux = matrizaux.multiplicacao(aux,total[i][x])
+                aux = matrizaux.multiplicacao(aux,total[i][x]);
             }
 
             //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
@@ -138,8 +138,17 @@ window.onload = function () {
             
         }
         
+        //Movendo a estrela para o (0, 0) para poder fazer a transformação
+        translacao_antes_transformar = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [-forma_estrela_2d.dist_x, -forma_estrela_2d.dist_y, -forma_estrela_2d.dist_z, 1]]
+        forma_estrela_2d.coordenadas = matrizaux.multiplicacao(forma_estrela_2d.coordenadas, translacao_antes_transformar)
+
+        //Aplicando as transformações
         forma_estrela_2d.a1 = matrizaux.multiplicacao(forma_estrela_2d.coordenadas,aux)
         x = x + 1;
+
+        //Movendo a estrela de volta para sua posição atual depois da transformação
+        translacao_depois_transformar = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [forma_estrela_2d.dist_x, forma_estrela_2d.dist_y, forma_estrela_2d.dist_z, 1]]
+        forma_estrela_2d.coordenadas = matrizaux.multiplicacao(forma_estrela_2d.coordenadas, translacao_depois_transformar)
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         console.log("oi")
