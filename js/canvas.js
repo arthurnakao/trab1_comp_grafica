@@ -84,27 +84,56 @@ window.onload = function () {
     console.log(forma_estrela_2d)
 
 
-    escala = new Escala([[0.5, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 0.5, 0], [0, 0, 0, 1]], 0, 200);
-    translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [400, 400, 400, 1]], 0, 500)
-    cizalhamento = new Cizalhamento([[1, 0.1, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 24)
-    translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [4000, 2000, 4000, 1]], 0, 1000)
-    escala2 = new Escala([[0.1, 0, 0, 0], [0, 0.1, 0, 0], [0, 0, 0.1, 0], [0, 0, 0, 1]], 0, 50);
-    console.log(escala.criadorDeInbetween())
-    var x = 1;
-    var x1 = 1;
-    var z = escala.criadorDeInbetween();
-    var z2 = translacao.criadorDeInbetween();
-    var z3 = cizalhamento.criadorDeInbetween();
-    var z4 = translacao2.criadorDeInbetween();
-    var total = [z3, z2]
+    //escala = new Escala([[0.5, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 0.5, 0], [0, 0, 0, 1]], 0, 200);
+    //translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [400, 400, 400, 1]], 0, 500)
+    //cizalhamento = new Cizalhamento([[1, 0.1, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 24)
+    //translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [4000, 2000, 4000, 1]], 0, 1000)
+    //escala2 = new Escala([[0.1, 0, 0, 0], [0, 0.1, 0, 0], [0, 0, 0.1, 0], [0, 0, 0, 1]], 0, 50);
+    //console.log(escala.criadorDeInbetween())
+    //var x = 1;
+    //var x1 = 1;
+    //var z = escala.criadorDeInbetween();
+    //var z2 = translacao.criadorDeInbetween();
+    //var z3 = cizalhamento.criadorDeInbetween();
+    //var z4 = translacao2.criadorDeInbetween();
+    //var total = [z3, z2]
 
-    console.log(z2[5])
+    var x = 1;
+    var matrizaux = new Matrizes();
+    translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [150, 0, 0, 1]], 0, 150);
+    translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 400, 0, 1]], 0, 150);
+    cisalhamento = new Cizalhamento([[1, 2, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 50);
+    escala = new Escala([[1, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 130, 150);
+    var teste = [translacao, translacao2, escala];
+    var total = [translacao.criadorDeInbetween(), translacao2.criadorDeInbetween(), escala.criadorDeInbetween()];
+
 
     function animacao() {
         var aux =[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
         for(var i = 0; i<total.length;i++){
             if(total[i][x] != undefined) {
                 aux = matrizaux.multiplicacao(aux,total[i][x])
+            }
+
+            //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
+            //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
+            //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
+            //Se a transformação for de translação
+            if(teste[i].constructor.name == "Translacao" && total[i][x] != undefined) {
+                var passo = teste[i].fim - teste[i].inicio;
+                
+                //Se houver alguma transformação no eixo x
+                if(total[i][x][3][0] != 0) {
+                    forma_estrela_2d.dist_x += teste[i].matrizDeTransformacao[3][0] / passo;
+                }
+                //Se houver alguma transofmação no eixo y
+                if(total[i][x][3][1]) {
+                    forma_estrela_2d.dist_y += teste[i].matrizDeTransformacao[3][1] / passo;
+                }
+                //Se houver alguma transformação no eixo z
+                if(total[i][x][3][2]) {
+                    forma_estrela_2d.dist_z += teste[i].matrizDeTransformacao[3][2] / passo;
+                }
             }
             
         }

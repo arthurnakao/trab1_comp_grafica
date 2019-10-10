@@ -4,6 +4,9 @@ class Forma {
         this.arestas = array_arestas; //Array de Arrays (Tamanho 2), que tem o index das coordenadas que devem ser ligadas por um aresta
         this.faces = array_faces; //Array de Arrays (Tamanho Variavel) que tem o index das arestas que devem ser colocadas para formar uma face
         this.a1 = this.coordenadas;
+        this.dist_x = 0;
+        this.dist_y = 0;
+        this.dist_z = 0;
     }
     
     //Definição do método que desenha todas as arestas da forma
