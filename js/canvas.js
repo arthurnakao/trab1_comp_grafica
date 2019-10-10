@@ -74,39 +74,38 @@ window.onload = function () {
                    [0,1,0.8,0],
                    [0,0,0.8,0],
                    [0,0,0,1]]
+                   
     forma_estrela_2d.transformar_2d(matrix_tilt);
-    console.log(forma_estrela_2d)
 
     //Colocando coordenada homogênea nos vetores da Forma
     for (var i = 0; i < forma_estrela_2d.coordenadas.length; i++) {
         forma_estrela_2d.coordenadas[i][3] = 1;
     }
-    console.log(forma_estrela_2d)
-
-
-    //escala = new Escala([[0.5, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 0.5, 0], [0, 0, 0, 1]], 0, 200);
-    //translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [400, 400, 400, 1]], 0, 500)
-    //cizalhamento = new Cizalhamento([[1, 0.1, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 24)
-    //translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [4000, 2000, 4000, 1]], 0, 1000)
-    //escala2 = new Escala([[0.1, 0, 0, 0], [0, 0.1, 0, 0], [0, 0, 0.1, 0], [0, 0, 0, 1]], 0, 50);
-    //console.log(escala.criadorDeInbetween())
-    //var x = 1;
-    //var x1 = 1;
-    //var z = escala.criadorDeInbetween();
-    //var z2 = translacao.criadorDeInbetween();
-    //var z3 = cizalhamento.criadorDeInbetween();
-    //var z4 = translacao2.criadorDeInbetween();
-    //var total = [z3, z2]
 
     var x = 1;
     var matrizaux = new Matrizes();
-    translacao = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [150, 0, 0, 1]], 0, 150);
-    translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 400, 0, 1]], 0, 150);
-    cisalhamento = new Cizalhamento([[1, 2, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 50);
-    escala = new Escala([[1, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 130, 150);
-    var teste = [translacao, translacao2, escala];
-    var total = [translacao.criadorDeInbetween(), translacao2.criadorDeInbetween(), escala.criadorDeInbetween()];
-
+    escalaX = new Escala([[0.5, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 50);
+    escalaY = new Escala([[1, 0, 0, 0], [0, 0.5, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 0, 50);
+    escalaZ = new Escala([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0.5, 0], [0, 0, 0, 1]], 0, 50);
+    translacaoX = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [150, 0, 0, 1]], 50, 200);
+    translacaoY = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 400, 0, 1]], 50, 200);
+    translacaoZ = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 100, 1]], 50, 200);
+    cisalhamento1 = new Cizalhamento([[1, 2, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 200, 250);
+    cisalhamento2 = new Cizalhamento([[1, 0, 0, 0], [0, 1, 2, 0], [0, 0, 1, 0], [0, 0, 0, 1]], 200, 250);
+    cisalhamento3 = new Cizalhamento([[1, 0, 0, 0], [0, 1, 0, 0], [2, 0, 1, 0], [0, 0, 0, 1]], 200, 250);
+    translacao2 = new Translacao([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [150, 0, 0, 1]], 250, 300);
+    var total = [
+        escalaX.criadorDeInbetween(), 
+        escalaY.criadorDeInbetween(), 
+        escalaZ.criadorDeInbetween(), 
+        translacaoX.criadorDeInbetween(), 
+        translacaoY.criadorDeInbetween(), 
+        translacaoZ.criadorDeInbetween(),
+        cisalhamento1.criadorDeInbetween(),
+        cisalhamento2.criadorDeInbetween(),
+        cisalhamento3.criadorDeInbetween(),
+        translacao2.criadorDeInbetween()
+    ];
 
     function animacao() {
         var aux =[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
@@ -114,44 +113,40 @@ window.onload = function () {
             if(total[i][x] != undefined) {
                 aux = matrizaux.multiplicacao(aux,total[i][x]);
             }
-
-            //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
-            //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
-            //FAZ COM QUE CADA TRANSFORMAÇÃO DA ESTRELA SEJA ARMAZENADAS
-            //Se a transformação for de translação
-            if(teste[i].constructor.name == "Translacao" && total[i][x] != undefined) {
-                var passo = teste[i].fim - teste[i].inicio;
-                
-                //Se houver alguma transformação no eixo x
-                if(total[i][x][3][0] != 0) {
-                    forma_estrela_2d.dist_x += teste[i].matrizDeTransformacao[3][0] / passo;
-                }
-                //Se houver alguma transofmação no eixo y
-                if(total[i][x][3][1]) {
-                    forma_estrela_2d.dist_y += teste[i].matrizDeTransformacao[3][1] / passo;
-                }
-                //Se houver alguma transformação no eixo z
-                if(total[i][x][3][2]) {
-                    forma_estrela_2d.dist_z += teste[i].matrizDeTransformacao[3][2] / passo;
-                }
-            }
-            
         }
         
+/*
+        let menor_x = forma_estrela_2d.a1[0][0];
+        let menor_y = forma_estrela_2d.a1[0][1];
+        for(let i=0; i<forma_estrela_2d.coordenadas.length;i++){
+            if (forma_estrela_2d.a1[i][0]<menor_x)
+            menor_x = forma_estrela_2d.a1[i][0];
+            if (forma_estrela_2d.a1[i][1]<menor_y)
+            menor_y = forma_estrela_2d.a1[i][1];
+        }
+*/
+
+/*           
         //Movendo a estrela para o (0, 0) para poder fazer a transformação
-        translacao_antes_transformar = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [-forma_estrela_2d.dist_x, -forma_estrela_2d.dist_y, -forma_estrela_2d.dist_z, 1]]
-        forma_estrela_2d.coordenadas = matrizaux.multiplicacao(forma_estrela_2d.coordenadas, translacao_antes_transformar)
+        for(let i=0; i<forma_estrela_2d.coordenadas.length;i++){
+            forma_estrela_2d.a1[i][0] -= menor_x;
+            forma_estrela_2d.a1[i][1] -= menor_y;
+        }
+*/
 
         //Aplicando as transformações
         forma_estrela_2d.a1 = matrizaux.multiplicacao(forma_estrela_2d.coordenadas,aux)
         x = x + 1;
 
+/*
         //Movendo a estrela de volta para sua posição atual depois da transformação
-        translacao_depois_transformar = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [forma_estrela_2d.dist_x, forma_estrela_2d.dist_y, forma_estrela_2d.dist_z, 1]]
-        forma_estrela_2d.coordenadas = matrizaux.multiplicacao(forma_estrela_2d.coordenadas, translacao_depois_transformar)
+        for(let i=0; i<forma_estrela_2d.coordenadas.length;i++){
+           forma_estrela_2d.a1[i][0] += menor_x;
+           forma_estrela_2d.a1[i][1] += menor_y;
+        }
+*/
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        console.log("oi")
         projetor.projetar();
     }
 
