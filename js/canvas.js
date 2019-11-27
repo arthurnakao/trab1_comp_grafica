@@ -7,57 +7,32 @@ window.onload = function () {
     var matrizaux = new Matrizes();
 
     //variaveis das coordenadas da estrela 2d
-    coord_star_2d = [[425 / 10, 0, 50 / 10],
-    [295 / 10, 270 / 10, 50 / 10],
-    [0, 310 / 10, 50 / 10],
-    [213 / 10, 513 / 10, 50 / 10],
-    [160 / 10, 805 / 10, 50 / 10],
-    [425 / 10, 667 / 10, 50 / 10],
-    [690 / 10, 805 / 10, 50 / 10],
-    [635 / 10, 513 / 10, 50 / 10],
-    [850 / 10, 310 / 10, 50 / 10],
-    [555 / 10, 270 / 10, 50 / 10],
-    [425 / 10, 0, 400 / 10],
-    [295 / 10, 270 / 10, 400 / 10],
-    [0, 310 / 10, 400 / 10],
-    [213 / 10, 513 / 10, 400 / 10],
-    [160 / 10, 805 / 10, 400 / 10],
-    [425 / 10, 667 / 10, 400 / 10],
-    [690 / 10, 805 / 10, 400 / 10],
-    [635 / 10, 513 / 10, 400 / 10],
-    [850 / 10, 310 / 10, 400 / 10],
-    [555 / 10, 270 / 10, 400 / 10]]
+    coord_star_2d = [[425, 10, 50],
+                    [125, 10, 50],
+                    [10, 125, 50],
+                    [600, 125, 50],
+                    [425, 10, 150],
+                    [125, 10, 150],
+                    [10, 125, 150],
+                    [600, 125, 150],]
+
     arest_star_2d = [[0, 1],
-    [1, 2],
-    [2, 3],
-    [3, 4],
-    [4, 5],
-    [5, 6],
-    [6, 7],
-    [7, 8],
-    [8, 9],
-    [9, 0],
-    [10, 11],
-    [11, 12],
-    [12, 13],
-    [13, 14],
-    [14, 15],
-    [15, 16],
-    [16, 17],
-    [17, 18],
-    [18, 19],
-    [19, 10],
-    [0, 10],
-    [1, 11],
-    [2, 12],
-    [3, 13],
-    [4, 14],
-    [5, 15],
-    [6, 16],
-    [7, 17],
-    [8, 18],
-    [9, 19]]
-    fac_star_2d = [] //A estrela ainda não tem as declarações de faces
+                    [1, 2],
+                    [2, 3],
+                    [3, 0],
+                    [4, 5],
+                    [5, 6],
+                    [6, 7],
+                    [7, 4],
+                    [0, 4],
+                    [1, 5],
+                    [2, 6],
+                    [3, 7]]
+    fac_star_2d = [[0, 1, 2, 3],
+                   [4, 5, 6, 7],
+                   [8, 4, 5, 10],
+                   [9, 5, 6, 11]]
+                     //A estrela ainda não tem as declarações de faces
 
     //Estrela
     forma_estrela_2d = new Forma(coord_star_2d, arest_star_2d, fac_star_2d);
@@ -77,7 +52,15 @@ window.onload = function () {
                    
     forma_estrela_2d.transformar_2d(matrix_tilt);
 
+    var normal = forma_estrela_2d.normal_plano()
+    this.console.log(normal)
+
+    projetor.projetar()
+
+    
     //Colocando coordenada homogênea nos vetores da Forma
+
+    /*
     for (var i = 0; i < forma_estrela_2d.coordenadas.length; i++) {
         forma_estrela_2d.coordenadas[i][3] = 1;
     }
@@ -171,7 +154,7 @@ window.onload = function () {
         }
 */
         //Aplicando as transformações
-
+/*
         forma_estrela_2d.a1 = matrizaux.multiplicacao(forma_estrela_2d.a1,aux)
         forma_estrela_2d.a1 = matrizaux.multiplicacao(forma_estrela_2d.a1,[[1,0,0,0],[0,1,0,0],[0,0,1,0],[menor_x,menor_y,forma_estrela_2d.z,1]])
 
@@ -191,12 +174,12 @@ window.onload = function () {
            forma_estrela_2d.a1[i][1] += menor_y;
         }
 */
-
+/*
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         projetor.projetar();
         
     }
 
     setInterval(animacao, 41.6666666667) //A função é executada em cada frame, tendo cada frame o valor de 1/24 segundos
-
+*/
 }

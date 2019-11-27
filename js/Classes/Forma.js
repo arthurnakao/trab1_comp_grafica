@@ -39,4 +39,66 @@ class Forma {
             this.coordenadas[i][2] = array_novo[3] / array_novo[3]
         }
     }
+    
+    /*
+    
+    coord_star_2d = [[425, 10, 50],
+                    [125, 10, 50],
+                    [10, 125, 50],
+                    [600, 125, 50],
+                    [425, 10, 150],
+                    [125, 10, 150],
+                    [10, 125, 150],
+                    [600, 125, 150],]
+
+    arest_star_2d = [[0, 1],
+                    [1, 2],
+                    [2, 3],
+                    [3, 0],
+                    [4, 5],
+                    [5, 6],
+                    [6, 7],
+                    [7, 4],
+                    [0, 4],
+                    [1, 5],
+                    [2, 6],
+                    [3, 7]]
+    fac_star_2d = [[0, 1, 2, 3],
+                   [4, 5, 6, 7],
+                   [8, 4, 5, 10],
+                   [9, 5, 6, 11]]
+    
+    */
+    
+    //Função para encontrar vetor normal ao plano
+    normal_plano() {
+
+        var vetor_normais = []
+
+        for (var i = 0; i<this.faces.length; i++) {
+            //Subtrai pontos para encontrar os vetores do plano
+            var vetor1 = [(this.coordenadas[this.arestas[this.faces[i][0]][1]][0] - this.coordenadas[this.arestas[this.faces[i][0]][0]][0]), //coord[1][0] - coord[0][0] 
+                          (this.coordenadas[this.arestas[this.faces[i][0]][1]][1] - this.coordenadas[this.arestas[this.faces[i][0]][0]][1]), //coord[1][1] - coord[0][1]
+                          (this.coordenadas[this.arestas[this.faces[i][0]][1]][2] - this.coordenadas[this.arestas[this.faces[i][0]][0]][2])] //coord[1][2] - coord[0][2]
+            
+            var vetor2 = [(this.coordenadas[this.arestas[this.faces[i][1]][1]][0] - this.coordenadas[this.arestas[this.faces[i][1]][0]][0]), //coord[2][0] - coord[1][0]
+                          (this.coordenadas[this.arestas[this.faces[i][1]][1]][1] - this.coordenadas[this.arestas[this.faces[i][1]][0]][1]), //coord[2][1] - coord[1][1]
+                          (this.coordenadas[this.arestas[this.faces[i][1]][1]][2] - this.coordenadas[this.arestas[this.faces[i][1]][0]][2])] //coord[2][2] - coord[1][2]
+
+            //Armazena informaçoes para fazer o calculo da normal atraves da matriz determinante
+            var matriz_det = [[1, -1, 1], 
+                             [vetor1[0], vetor1[1], vetor1[2]], 
+                             [vetor2[0], vetor2[1], vetor2[2]]]
+            //console.log(matriz_det)
+            
+            //Calcula a normal usando determinante
+            var normal = [(matriz_det[0][0]*(matriz_det[1][1]*matriz_det[2][2] - matriz_det[1][2]*matriz_det[2][1])), 
+                          (matriz_det[0][1]*(matriz_det[1][0]*matriz_det[2][2] - matriz_det[1][2]*matriz_det[2][0])), 
+                          (matriz_det[0][2]*(matriz_det[1][0]*matriz_det[2][1] - matriz_det[1][1]*matriz_det[2][0]))]
+
+            vetor_normais.push(normal)
+        }
+
+        return vetor_normais
+    }
 }
