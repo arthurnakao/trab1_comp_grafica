@@ -46,7 +46,7 @@ class Projetor {
         var normal = objeto.normal_plano()
         var arr = [];
         for (var j = 0; j < objeto.faces.length; j++) {
-            var t = [objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][0] - 0, objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][1] - 0, objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][2] - 250];
+            var t = [objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][0] - 0, objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][1] - 0, objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][2] + 250];
             console.log(objeto.faces[j])
             console.log(t);
             console.log(this.produtoInterno(t, normal[j]));
