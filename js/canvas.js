@@ -10,28 +10,36 @@ window.onload = function () {
     coord_star_2d = [[425, 10, 50],
                     [125, 10, 50],
                     [10, 125, 50],
+                    [310, 225, 50],
                     [600, 125, 50],
                     [425, 10, 150],
                     [125, 10, 150],
                     [10, 125, 150],
+                    [310, 225, 150],
                     [600, 125, 150],]
 
     arest_star_2d = [[0, 1],
                     [1, 2],
                     [2, 3],
-                    [3, 0],
-                    [4, 5],
+                    [3, 4],
+                    [4, 0],
                     [5, 6],
                     [6, 7],
-                    [7, 4],
-                    [0, 4],
-                    [1, 5],
-                    [2, 6],
-                    [3, 7]]
-    fac_star_2d = [[0, 1, 2, 3],
-                   [4, 5, 6, 7],
-                   [8, 4, 5, 10],
-                   [9, 5, 6, 11]]
+                    [7, 8],
+                    [8, 9],
+                    [9, 5],
+                    [0, 5],
+                    [1, 6],
+                    [2, 7],
+                    [3, 8],
+                    [4, 9],]
+    fac_star_2d = fac_star_2d = [[0, 1, 2, 3, 4],
+    [5, 6, 7, 8, 9],
+    [0, 1, 5, 6],
+    [1, 2, 6, 7],
+    [2, 3, 7, 8],
+    [3, 4, 8, 9],
+    [0, 4, 5, 9]]
                      //A estrela ainda não tem as declarações de faces
 
     //Estrela
@@ -39,7 +47,7 @@ window.onload = function () {
 
     //Projetando a imagem
     projetor = new Projetor(ctx, [forma_estrela_2d], null);
-
+  
 
     // matriz_tilt = [[Math.cos(Math.PI / 3), (Math.cos(Math.PI / 4) * Math.cos(Math.PI / 4)), -(Math.cos(Math.PI / 4)) * Math.cos(Math.PI / 3), 0],
     // [0, Math.cos(Math.PI / 3), Math.cos(Math.PI / 4), 0],
@@ -55,7 +63,9 @@ window.onload = function () {
     var normal = forma_estrela_2d.normal_plano()
     this.console.log(normal)
 
-    projetor.projetar()
+    //projetor.projetar()
+    projetor.desenhaFinal(forma_estrela_2d)
+    
 
     
     //Colocando coordenada homogênea nos vetores da Forma
