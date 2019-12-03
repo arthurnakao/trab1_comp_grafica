@@ -42,6 +42,15 @@ class Projetor {
     }
 
     desenhaFinal(objeto) {
+        //this.ctx.fillStyle = "rgb(70,60,140)";
+        //this.ctx.beginPath();
+        //this.ctx.moveTo(500, 500);
+        //this.ctx.lineTo(600, 500);
+        //this.ctx.lineTo(600, 600);
+        //this.ctx.lineTo(500, 650);
+        //this.ctx.lineTo(500, 500);
+        //this.ctx.closePath();
+        //this.ctx.fill();
         this.ctx.beginPath()
         var normal = objeto.normal_plano()
         var arr = [];
@@ -55,6 +64,49 @@ class Projetor {
                 for (var i = 0; i < objeto.faces[j].length; i++) {
                     arr.push(objeto.arestas[objeto.faces[j][i]]);
                 }
+                //Pintar face
+                //Pintar face
+                //Pintar face
+                this.ctx.fillStyle = "rgb(70,60,140)";
+                this.ctx.beginPath();
+                var last;
+                for (var i = 0; i < objeto.faces[j].length; i++) {
+                    if (i == 0){
+                        console.log("olaaaaaaaaaa");
+                        if(objeto.faces[j][i][0] == objeto.faces[j][i+1][0] || objeto.faces[j][i][0] == objeto.faces[j][i+1][1]) {
+                            this.ctx.moveTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][1]);
+                            last = 0;
+                        } else {
+                            this.ctx.moveTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][1]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][1]][1]);
+                            last = 1;
+                        }
+                    } else {
+                        if(objeto.arestas[objeto.faces[j][i]][0] == objeto.arestas[objeto.faces[j][i-1]][last]) {
+                            console.log("olaaaaaaaaaa");
+                            this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][1]);
+                            last = 1;
+                        } else {
+                            this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][1]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][1]][1]);
+                            last = 0;
+                        }
+                    }                    
+                    if(objeto.faces[j].length - 1 == i) {
+                        if(objeto.arestas[objeto.faces[j][0]][0] == objeto.arestas[objeto.faces[j][i-1]][last]) {
+                            console.log("olaaaaaaaaaa");
+                            this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][1]);
+                            last = 1;
+                        } else {
+                            this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][1]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][1]][1]);
+                            last = 0;
+                        }
+                    }
+                }
+                this.ctx.closePath();
+                this.ctx.fill();
+                //Pintar face FIM
+                //Pintar face FIM
+                //Pintar face FIM
+
             }
         }
         console.log(arr);

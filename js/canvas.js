@@ -49,14 +49,14 @@ window.onload = function () {
                     [4, 9],]*/
 
     arest_star_2d = [
-        [1, 0], //Liga Esquerda e Cima
+        [1, 0], //Liga Cima e Esquerda
         [0, 4], //Liga Esquerda e Abaixo Esquerda
         [4, 3], //Liga Abaixo Esquerda e Abaixo Direita
         [3, 2], //Liga Abaixo Direita e Direita
         [2, 1],  //Liga Direita e Cima
         //Declarações das areastas da parte da estrela que tem z = 0
 
-        [5, 6], //Liga Esquerda e Cima
+        [6, 5], //Liga Cima e Esquerda
         [5, 9], //Liga Esquerda e Abaixo Esquerda
         [9, 8], //Liga Abaixo Esquerda e Abaixo Direita
         [8, 7], //Liga Abaixo Direita e Direita
