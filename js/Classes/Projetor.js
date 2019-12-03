@@ -22,6 +22,13 @@ class Projetor {
         }
         return total;
     }
+    moduloVetor(v1) {
+        var total = 0
+        for (var i = 0; i < v1.length; i++) {
+            total += Math.pow(v1[i], 2)
+        }
+        return Math.sqrt(total)
+    }
 
     desenhar_linhas(objeto) {
 
@@ -67,12 +74,26 @@ class Projetor {
                 //Pintar face
                 //Pintar face
                 //Pintar face
-                this.ctx.fillStyle = "rgb(70,60,140)";
+
+                //Calcular Intensidade da Cor (I = I.ambiente + I.difuso + I.especular)
+                var ka = 0.4
+                var Iam = [70, 60, 140]
+                var Idif = [255, 255, 255]
+                var I = []
+                
+                for (var i=0; i < Iam.length; i++) {
+                    Iam[i] *= ka
+                    Iam[i] += ka*Idif[i]*Math.cos((this.produtoInterno(t, normal[j])/(this.moduloVetor(t)*this.moduloVetor(normal[j]))))
+                    I.push(Iam[i])
+                }
+                console.log(I)
+
+                this.ctx.fillStyle = "rgb("+I[0]+","+I[1]+","+I[2]+")";
                 this.ctx.beginPath();
                 var last;
                 for (var i = 0; i < objeto.faces[j].length; i++) {
                     if (i == 0){
-                        console.log("olaaaaaaaaaa");
+                        console.log("olaaaaaaaaaa1");
                         if(objeto.faces[j][i][0] == objeto.faces[j][i+1][0] || objeto.faces[j][i][0] == objeto.faces[j][i+1][1]) {
                             this.ctx.moveTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][1]);
                             last = 0;

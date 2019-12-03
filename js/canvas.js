@@ -19,16 +19,16 @@ window.onload = function () {
                     [600, 125, 150],]*/
 
     coord_star_2d = [
-        [0, 120, 0], //Esquerda
+        [10, 120, 0], //Esquerda
         [165, 0, 0], //Cima
         [325, 120, 0], //Direita
-        [365, 310, 0], //Abaixo Direita
+        [265, 310, 0], //Abaixo Direita
         [62, 310, 0], //Abaixo Esquerda
 
-        [0, 120, 50], //Esquerda
+        [10, 120, 50], //Esquerda
         [165, 0, 50], //Cima
         [325, 120, 50], //Direita
-        [365, 310, 50], //Abaixo Direita
+        [265, 310, 50], //Abaixo Direita
         [62, 310, 50], //Abaixo Esquerda
     ]
 

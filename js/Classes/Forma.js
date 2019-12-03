@@ -101,4 +101,9 @@ class Forma {
 
         return vetor_normais
     }
+/*
+    calcula_intensidade() {
+        var intensidade = iamb + (idiff*iluz*produtoVet) + (iespec*prodReflet) 
+    }
+*/
 }
