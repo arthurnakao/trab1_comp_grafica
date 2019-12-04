@@ -110,16 +110,16 @@ class Forma {
 
 curva(){
     var aux = []
-    var xi = this.coordenadas[0][0];
-    var yi = this.coordenadas[0][1];
+    var xi = this.coordenadas[1][0];
+    var yi = this.coordenadas[1][1];
     var zi = 0;
-    var xf = this.coordenadas[1][0];
-    var yf = this.coordenadas[1][1];
+    var xf = this.coordenadas[0][0];
+    var yf = this.coordenadas[0][1];
     var zf = 0;
     var u = 0;
     var j = 1;
     var aux2 = [];
-    for(var i = 0.01; i <= 0.1 ; i += 0.01){
+    for(var i = 0; i <= 1 ; i += 0.01){
         var resultadoX = Math.pow(1-i, 3)*xi + 3*Math.pow(1-i, 2)*i*60 + 3*(1-i)*Math.pow(i, 2)*80 + Math.pow(i, 3)*xf;
         var resultadoY = Math.pow(1-i, 3)*yi + 3*Math.pow(1-i, 2)*i*60 + 3*(1-i)*Math.pow(i, 2)*80 + Math.pow(i, 3)*yf;
         
@@ -138,8 +138,7 @@ curva(){
         u = this.coordenadas.length - 1;
         console.log(u)
 
-            
-        //this.coordenadas.splice(1, 0, aux);
+        this.coordenadas.splice(10,1, aux);
 
        
     }
