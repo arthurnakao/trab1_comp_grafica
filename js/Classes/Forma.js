@@ -120,31 +120,43 @@ curva(){
     var j = 1;
     var aux2 = [];
     for(var i = 0; i <= 1 ; i += 0.01){
-        var resultadoX = Math.pow(1-i, 3)*xi + 3*Math.pow(1-i, 2)*i*60 + 3*(1-i)*Math.pow(i, 2)*80 + Math.pow(i, 3)*xf;
+        var resultadoX = Math.pow(1-i, 3)*xi + 3*Math.pow(1-i, 2)*i*60 + 3*(1-i)*Math.pow(i, 2)*180 + Math.pow(i, 3)*xf;
         var resultadoY = Math.pow(1-i, 3)*yi + 3*Math.pow(1-i, 2)*i*60 + 3*(1-i)*Math.pow(i, 2)*80 + Math.pow(i, 3)*yf;
         
         aux = [resultadoX, resultadoY,0];
         this.coordenadas.push(aux)
         if(i == 0.01){
-            this.arestas[0][1] = this.coordenadas.length - 1;
-            aux2.push(this.arestas[0][1])
-            
+            this.arestas[0][1] = this.coordenadas.length - 1;         
 
            
         }
         else{
             this.arestas.push([u, this.coordenadas.length - 1])
+            aux2.push(this.arestas.length-1)
         }
         u = this.coordenadas.length - 1;
         console.log(u)
 
         this.coordenadas.splice(10,1, aux);
+        
 
        
     }
     this.arestas.push([this.coordenadas.length - 1, 0]);
-    console.log(this.coordenadas);
-    console.log(this.arestas);
+    aux2.push(this.arestas.length-1)
+    for(var i = 0; i < this.faces.length; i++){
+        var j = 0;
+        for(j = 0; j < this.faces[i].length; j++){
+            if(this.faces[i][j]==0){
+                break;
+            }
+        }
+        if(j < this.faces[i].length)
+        for(var z = 0; z < aux2.length; z++){
+            this.faces[i].splice(j,0,aux2[z]);
+        }
+    }
+    console.log(this.faces);
 
 
          

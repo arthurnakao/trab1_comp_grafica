@@ -1,4 +1,4 @@
-﻿class Projetor {
+class Projetor {
     constructor(ctx, listaDeObjetos, matrizDeProjecao) {
         this.ctx = ctx;
         this.listaDeObjetos = listaDeObjetos;
@@ -76,7 +76,7 @@
                 //Pintar face
 
                 //Calcular Intensidade da Cor (I = I.ambiente + I.difuso + I.especular)
-                var ka = 0.74              
+                var ka = 0.4
                 var Iam = [70, 60, 140]
                 var Idif = [255, 255, 255]
                 var I = []
@@ -104,9 +104,11 @@
                     } else {
                         if(objeto.arestas[objeto.faces[j][i]][0] == objeto.arestas[objeto.faces[j][i-1]][last]) {
                             console.log("olaaaaaaaaaa");
+                            
                             this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][0]][1]);
                             last = 1;
                         } else {
+                            
                             this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][1]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][i]][1]][1]);
                             last = 0;
                         }
@@ -117,6 +119,7 @@
                             this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][0]][1]);
                             last = 1;
                         } else {
+                            
                             this.ctx.lineTo(objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][1]][0], objeto.coordenadas[objeto.arestas[objeto.faces[j][0]][1]][1]);
                             last = 0;
                         }
@@ -132,16 +135,10 @@
         }
         console.log(arr);
 
-        for (var i = 0; i < arr.length; i++) {
-            //Posiciona o cursor nas coordenadas definidas pelo primeiro vertice da aresta
-            this.ctx.moveTo(objeto.a1[arr[i][0]][0], objeto.a1[arr[i][0]][1])
-            //Desenha uma linha até o segundo vértice da aresta
-            this.ctx.lineTo(objeto.a1[arr[i][1]][0], objeto.a1[arr[i][1]][1])
-        }
+        
 
         //Método que desenha tudo que foi "demarcado" na tela
-        this.ctx.stroke()
-        this.ctx.closePath()
+        
 
         }
         /*
